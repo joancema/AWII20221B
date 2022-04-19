@@ -21,3 +21,5 @@ function mostrarDatos({ nombre, apellido, geolocalizacion:{ lat,lng } })
 }
     
 mostrarDatos(persona)
+
+//joancemac@gmail.com
