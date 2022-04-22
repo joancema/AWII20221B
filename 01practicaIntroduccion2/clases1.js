@@ -7,17 +7,25 @@ const persona =
         lat:123.232,
         lng:23.234234,
     },
-    getNombreCompleto(){
+    getNombreCompleto: ()=>{
         return `${this.nombre} ${this.apellido}`
     }
 }
 
-function mostrarDatos({ nombre, apellido, geolocalizacion:{ lat,lng } })
+    this.nombre="John";
+    this.apellido="Cevallos";
+
+ console.log(persona.getNombreCompleto())
+
+function mostrarDatos({ nombre, apellido, geolocalizacion:{ lat,lng }, getNombreCompleto })
 {
-    console.log(nombre)
-    console.log(apellido)
-    console.log(lat)
-    console.log(lng)
+    
+    // console.log(nombre)
+    // console.log(apellido)
+    // console.log(lat)
+    // console.log(lng)
+    console.log(getNombreCompleto())
+    
 }
     
 mostrarDatos(persona)
