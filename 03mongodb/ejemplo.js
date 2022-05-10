@@ -24,7 +24,8 @@ const conexion=  "mongodb+srv://joancema:jacm1310@cluster0.x7met.mongodb.net/usu
           
     });
     const grupoAlmacenado =  await grupo1.save();
-    
+    //todo guardarPermisos y referenciar desde usuario
+
     const usuario1=  new Usuario(
         { nombre:"Administrador",
          idgrupo: grupoAlmacenado._id,
@@ -35,4 +36,5 @@ const conexion=  "mongodb+srv://joancema:jacm1310@cluster0.x7met.mongodb.net/usu
         })
     const usuarioAlmacenado = await usuario1.save();
     console.log(usuarioAlmacenado)
+    //todo probar populate en find
 })()
