@@ -20,9 +20,9 @@ app.post('/prueba', (req = request,res= response,next)=>{
     res.status(200).send(req.body);
     next('route');
 })
-// app.use('/prueba', (req,res,next)=>{
-//     res.status(200).send('middleware después de cambiar body');
-// })
+app.use('/prueba', (req,res,next)=>{
+    res.status(200).send('middleware después de cambiar body');
+})
 
 app.listen(PUERTO, ()=>{
     console.log(`Servidor en puerto ${PUERTO}`);
