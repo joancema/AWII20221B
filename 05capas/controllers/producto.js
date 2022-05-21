@@ -6,7 +6,7 @@ const obtenerProductos= async (req,res= response)=>{
     const query= { estado:true   };
     const [ total, productos ] =  await Promise.all(
         [
-            Producto.countDocuments(),
+            Producto.countDocuments(query),
             Producto.find(query)
             .skip(desde)
             .limit(limite)
