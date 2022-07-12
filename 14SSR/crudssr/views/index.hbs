@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <table>
+            <thead>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Costo</th>
+            </thead>
+            {{#each productos}}
+            <tr>
+                <td>{{ this.nombre }}</td>
+                <td>{{ this.precio }}</td>
+                <td>{{ this.costo }}</td>
+            </tr>
+            {{/each}}
+        </table>
+
+    </div>
+</div>

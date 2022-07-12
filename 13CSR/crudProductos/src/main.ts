@@ -1,15 +1,11 @@
 import './style.css'
 import axios from 'axios'
 import { IResProducto, Producto } from './interfaces/IProducto';
-
-
 const httpAxios =  axios.create({
   baseURL:'http://localhost:2500/v2/sextob/api/',
 })
-
 const app = document.querySelector<HTMLDivElement>('#app')!
-
-
+//#region mapa de elementos
 const etiqueta = document.createElement("label")
 etiqueta.textContent="Identificador"
 const input = document.createElement("input");
@@ -40,9 +36,8 @@ const precio = document.querySelector<HTMLInputElement>('#precio')!
 const costo = document.querySelector<HTMLInputElement>('#costo')!
 const minimo = document.querySelector<HTMLInputElement>('#minimo')!
 const stock = document.querySelector<HTMLInputElement>('#stock')!
-
 const cuerpo = document.querySelector<HTMLDivElement>('#cuerpo')!
-
+//#endregion
 nuevo.addEventListener('click',()=>{
   nombre.value=""
   estado.value=""
@@ -52,7 +47,6 @@ nuevo.addEventListener('click',()=>{
   stock.value=""
   id.value=""
 })
-
 consultar.addEventListener('click', async ()=>{
   const respproductos:IResProducto 
   =  await (await httpAxios.get<IResProducto>('productos')).data;
@@ -97,9 +91,7 @@ consultar.addEventListener('click', async ()=>{
   
 
 })
-
-
-grabar.addEventListener('click',()=>{
+grabar.addEventListener('click',async ()=>{
   const data:Producto = {
     nombre:nombre.value,
     costo: Number( costo.value),
@@ -108,6 +100,27 @@ grabar.addEventListener('click',()=>{
     stock: Number( stock.value),
 
   }
-  console.log(data);
+  // console.log(data);
+
+  if (id.value.trim().length>0 )
+  {
+    //        
+    const resp: Producto = await (await httpAxios.put<Producto>(`productos/${id.value}`)).data
+    console.log(`El prducto ${resp.nombre} fue modificado con éxito`);
+    
+    return;
+  }
+  try {
+    const resp: Producto =  await (await httpAxios.post<Producto>(`productos`, data)).data
+    console.log(`El producto ${resp.nombre} fue grabado con éxito`);
+  } catch (error) {
+    if ( axios.isAxiosError(error)  )
+    {
+      console.log(error );
+      
+    }
+    
+  }
+  
   
 })
