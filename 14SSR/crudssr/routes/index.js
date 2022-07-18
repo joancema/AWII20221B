@@ -14,5 +14,20 @@ router.get('/', function(req, res, next) {
     res.render('index', { productos: respuesta.data.productos });
   })
 });
+router.get('/producto/nuevo',(req,res,next)=>{
+  res.render('productoForm', {})
+})
+
+router.get('/producto/modificar/:id',(req,res,next)=>{
+  httpAxios.get(`productos/${req.params.id}`).then(respuesta=>{
+    res.render('productoForm', {producto: respuesta.data })
+  })
+})
+router.get('/producto/eliminar/:id', (req,res,next)=>{
+  httpAxios.delete(`productos/${req.params.id}`).then(respuesta=>{
+    res.redirect('/');
+  })
+})
+
 
 module.exports = router;

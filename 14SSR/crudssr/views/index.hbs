@@ -1,19 +1,31 @@
 <div class="container">
+
+
     <div class="row">
-        <table>
+        <br/>
+        <a href="/producto/nuevo" class="btn btn-primary" >Nuevo</a>
+        <table class="table table-striped">
             <thead>
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Costo</th>
+                <th colspan="2" >Opciones</th>
             </thead>
             {{#each productos}}
             <tr>
-                <td>{{ this.nombre }}</td>
-                <td>{{ this.precio }}</td>
-                <td>{{ this.costo }}</td>
+                <td>{{this.nombre}}</td>
+                <td>{{this.precio}}</td>
+                <td>{{this.costo}}</td>
+                <td><a href="/producto/modificar/{{this._id}}">Modificar</a></td>
+                <td><a href="/producto/eliminar/{{this._id}}">Eliminar</a></td>
+
             </tr>
             {{/each}}
         </table>
 
+
     </div>
+
+
+
 </div>
